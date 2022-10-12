@@ -1,0 +1,17 @@
+gamma: 0.99
+num_gpus: 1
+num_workers: 8
+num_envs_per_worker: 4
+# this implementation works only with ppo trained with full episode
+# as it much easier to get complete trajectories for memup training than,
+# building them from episode chunks
+batch_mode: "complete_episodes"
+#but using "complete episode" forces us to use big batches for training ppo
+rollout_fragment_length: 2000
+sgd_minibatch_size: 1000
+train_batch_size: 50000
+create_env_on_driver: True
+horizon: 1100
+entropy_coeff: 1.e-2
+model: null
+framework: "torch"
